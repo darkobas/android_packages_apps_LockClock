@@ -100,7 +100,7 @@
     <string name="show_alarm_title">Wyświetl następny alarm</string>
     <string name="weather_enabled">Włączone</string>
     <string name="weather_enable">Wyświetl pogodę</string>
-    <string name="weather_source">Pogoda Yahoo!</string>
+    <string name="weather_source_yahoo">Pogoda Yahoo!</string>
     <string name="weather_use_custom_location">Użyj własnej lokalizacji</string>
     <string name="weather_geolocated">Użyj sieci do lokalizacji</string>
     <string name="weather_custom_location_dialog_title">Podaj lokalizację</string>
@@ -162,4 +162,7 @@
     <string name="holo_orange_light">Jasnopomarańczowy</string>
     <string name="holo_orange_dark">Ciemnopomarańczowy</string>
     <string name="holo_blue_bright">Jaskrawy niebieski</string>
+    <string name="weather_cannot_reach_provider">%s poza zasięgiem</string>
+    <string name="weather_select_location">Wybierz lokalizację</string>
+    <string name="clock_am_pm_title">Pokaż wskaźnik AM/PM</string>
 </resources>
