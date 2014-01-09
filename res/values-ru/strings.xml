@@ -176,4 +176,13 @@
     <string name="holo_orange_light">Светло-оранжевый</string>
     <string name="holo_orange_dark">Тёмно-оранжевый</string>
     <string name="holo_blue_bright">Ярко-синий</string>
+<<<<<<< HEAD
+=======
+
+    <string name="weather_icon_set_title">Набор значков</string>
+    <string name="weather_icons_standard">Цветные</string>
+    <string name="weather_icons_monochrome">Монохромные</string>
+    <string name="icon_set_selection_get_more">Скачать ещё</string>
+
+>>>>>>> 21cff56... LockClock: Remove ghost setting
 </resources>

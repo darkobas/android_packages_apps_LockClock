@@ -165,4 +165,14 @@
     <string name="holo_orange_light">Orange clair</string>
     <string name="holo_orange_dark">Orange foncé</string>
     <string name="holo_blue_bright">Bleu vif</string>
+<<<<<<< HEAD
+=======
+
+    <!-- Weather icon sets -->
+    <string name="weather_icon_set_title">Définir les icônes</string>
+    <string name="weather_icons_standard">Coloré</string>
+    <string name="weather_icons_monochrome">Monochrome</string>
+    <string name="icon_set_selection_get_more">Plus\u2026</string>
+
+>>>>>>> 21cff56... LockClock: Remove ghost setting
 </resources>
