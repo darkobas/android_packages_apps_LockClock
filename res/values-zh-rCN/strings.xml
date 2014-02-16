@@ -68,7 +68,16 @@
     <string name="weather_45">雷阵雨</string>
     <string name="weather_46">阵雪</string>
     <string name="weather_47">局部雷阵雨</string>
+<<<<<<< HEAD
     <string name="weather_3200"></string>
+=======
+
+    <!-- Weather - Speed units -->
+    <string name="weather_kph">公里/小时</string>
+    <string name="weather_mph">英里/小时</string>
+
+    <!-- Weather - Wind directions -->
+>>>>>>> f6c7da2... cLock: Fix for Transifex
     <string name="weather_N">北</string>
     <string name="weather_NE">东北</string>
     <string name="weather_E">东</string>

@@ -67,7 +67,13 @@
     <string name="weather_45">Bouřkové přeháňky</string>
     <string name="weather_46">Sněhové přeháňky</string>
     <string name="weather_47">Ojedinělé bouřky</string>
+<<<<<<< HEAD
     <string name="weather_3200"></string>
+=======
+
+    <string name="weather_kph">km/h</string>
+
+>>>>>>> f6c7da2... cLock: Fix for Transifex
     <string name="weather_N">S</string>
     <string name="weather_NE">SV</string>
     <string name="weather_E">V</string>

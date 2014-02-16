@@ -57,6 +57,7 @@
     <string name="weather_34">"Frumoasă"</string>
     <string name="weather_35">"Ploaie cu Grindină"</string>
     <string name="weather_36">"Cald"</string>
+<<<<<<< HEAD
     <string name="weather_37">"Furtuni Izolate"</string>
     <string name="weather_38">"Furtuni Dispersate cu Tunete"</string>
     <string name="weather_39">"Furtuni Dispersate cu Tunete"</string>
@@ -73,6 +74,40 @@
     <string name="weather_tap_to_refresh">"Apăsaţi pentru actualizare"</string>
     <string name="weather_refreshing">"Actualizare"</string>
     <string name="weather_last_sync_just_now">"Acum"</string>
+=======
+    <string name="weather_37">"Furtuni izolate"</string>
+    <string name="weather_38">"Furtuni dispersate"</string>
+    <string name="weather_39">"Furtuni dispersate"</string>
+    <string name="weather_40">"Ploi ușoare"</string>
+    <string name="weather_41">"Ninsoare puternică"</string>
+    <string name="weather_42">"Ninsori dispersate"</string>
+    <string name="weather_43">"Ninsoare puternică"</string>
+    <string name="weather_44">"Parţial noros"</string>
+    <string name="weather_45">"Descărcări electrice"</string>
+    <string name="weather_46">"Averse de ninsoare"</string>
+    <string name="weather_47">"Descărcări electrice izolate"</string>
+
+    <!-- Weather - Speed units -->
+    <string name="weather_kph">km/h</string>
+    <string name="weather_mph">ml/h</string>
+
+    <!-- Weather - Wind directions -->
+    <string name="weather_N">N</string>
+    <string name="weather_NE">NE</string>
+    <string name="weather_E">E</string>
+    <string name="weather_SE">SE</string>
+    <string name="weather_S">S</string>
+    <string name="weather_SW">SV</string>
+    <string name="weather_W">V</string>
+    <string name="weather_NW">NV</string>
+
+    <!-- Weather - Error messages -->
+    <string name="weather_no_data">Nu există date</string>
+    <string name="weather_tap_to_refresh">Apăsați pentru actualizare</string>
+    <string name="weather_refreshing">Actualizare</string>
+    <string name="weather_last_sync_just_now">Acum</string>
+    <string name="weather_cannot_reach_provider">Meteo indisponibil</string>
+>>>>>>> f6c7da2... cLock: Fix for Transifex
 
     <string name="weather_refresh_manual">"Manual"</string>
     <string name="weather_refresh_30min">"30 minute"</string>

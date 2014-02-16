@@ -66,7 +66,12 @@
     <string name="weather_45">Liūtys su perkūnija</string>
     <string name="weather_46">Sniego pūgos</string>
     <string name="weather_47">Izoliuotos liūtys su perkūnija</string>
+<<<<<<< HEAD
     <string name="weather_3200"></string>
+=======
+    <string name="weather_kph">km / val.</string>
+    <string name="weather_mph">ml / val.</string>
+>>>>>>> f6c7da2... cLock: Fix for Transifex
     <string name="weather_N">Š</string>
     <string name="weather_NE">ŠR</string>
     <string name="weather_E">R</string>

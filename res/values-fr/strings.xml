@@ -67,7 +67,16 @@
     <string name="weather_45">Orages</string>
     <string name="weather_46">Averses de neige</string>
     <string name="weather_47">Orages isolés</string>
+<<<<<<< HEAD
     <string name="weather_3200"></string>
+=======
+
+    <!-- Weather - Speed units -->
+    <string name="weather_kph">km/h</string>
+    <string name="weather_mph">mi/h</string>
+
+    <!-- Weather - Wind directions -->
+>>>>>>> f6c7da2... cLock: Fix for Transifex
     <string name="weather_N">N</string>
     <string name="weather_NE">NE</string>
     <string name="weather_E">E</string>

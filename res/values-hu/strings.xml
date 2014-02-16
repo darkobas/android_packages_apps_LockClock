@@ -72,7 +72,6 @@
     <string name="weather_46">Hózáporok</string>
     <string name="weather_47">Elszigetelt vihar</string>
     <!-- Forecast unavailable -->
-    <string name="weather_3200"></string>
 
     <!-- Weather - Wind directions -->
     <string name="weather_N">É</string>
