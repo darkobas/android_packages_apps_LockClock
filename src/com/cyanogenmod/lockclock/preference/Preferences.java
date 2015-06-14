@@ -21,10 +21,12 @@ import android.app.ActionBar;
 import android.appwidget.AppWidgetManager;
 import android.content.Intent;
 import android.preference.PreferenceActivity;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import com.cyanogenmod.lockclock.R;
+import com.cyanogenmod.lockclock.weather.ForecastActivity;
 
 import java.util.List;
 
@@ -32,13 +34,18 @@ public class Preferences extends PreferenceActivity {
 
     // only used when adding a new widget
     private int mNewWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
+    private boolean isSettingsCall;
 
     @Override
     public void onBuildHeaders(List<Header> target) {
         loadHeadersFromResource(R.xml.preferences_headers, target);
-
+        isSettingsCall = false;
         // Check if triggered from adding a new widget
         Intent intent = getIntent();
+        Bundle extras = intent.getExtras(); //#LockClockEnhance
+        if (extras != null) {
+            isSettingsCall = extras.getBoolean( ForecastActivity.IS_SETTING_CLICKED);
+        }
         if (intent != null
                 && AppWidgetManager.ACTION_APPWIDGET_CONFIGURE.equals(intent.getAction())) {
             mNewWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, mNewWidgetId);
@@ -69,8 +76,12 @@ public class Preferences extends PreferenceActivity {
         switch (item.getItemId()) {
             case R.id.menu_done:
             case android.R.id.home:
-                myResult(RESULT_OK);
-                finish();
+                if(isSettingsCall){
+                    callForecastActivity();
+                } else {
+                    myResult(RESULT_OK);
+                    finish();
+                }
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -80,8 +91,18 @@ public class Preferences extends PreferenceActivity {
     @Override
     public void onBackPressed() {
         // If launched from the configure intent, signal RESULT_OK
-        myResult(RESULT_OK);
-        super.onBackPressed();
+        if(isSettingsCall){
+            callForecastActivity();
+        } else {
+            myResult(RESULT_OK);
+            super.onBackPressed();
+        }
+    }
+
+    private void callForecastActivity(){
+        Intent backIntent = new Intent(this, com.cyanogenmod.lockclock.weather.ForecastActivity.class);
+        startActivity(backIntent);
+        finish();
     }
 
     private void myResult(int result) {

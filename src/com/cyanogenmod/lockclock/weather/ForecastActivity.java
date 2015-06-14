@@ -20,6 +20,8 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.KeyguardManager;
 import android.app.WallpaperManager;
+import android.appwidget.AppWidgetManager;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -43,6 +45,11 @@ import com.cyanogenmod.lockclock.R;
 
 public class ForecastActivity extends Activity implements OnClickListener {
     private static final String TAG = "ForecastActivity";
+
+    //#LockClockEnhance
+    private static final String PREFERENCES_INTENT_ACTION = "android.appwidget.action.APPWIDGET_CONFIGURE";
+
+    public static final String IS_SETTING_CLICKED = "isSettingsClicked";
 
     private BroadcastReceiver mUpdateReceiver = new BroadcastReceiver() {
         @Override
@@ -95,7 +102,6 @@ public class ForecastActivity extends Activity implements OnClickListener {
             finish();
             return;
         }
-
         View fullLayout = ForecastBuilder.buildFullPanel(this, R.layout.forecast_activity, weather);
         setContentView(fullLayout);
         fullLayout.requestFitSystemWindows();
@@ -103,13 +109,17 @@ public class ForecastActivity extends Activity implements OnClickListener {
         // Register an onClickListener on Weather refresh
         findViewById(R.id.weather_refresh).setOnClickListener(this);
 
+        // Register an onClickListener on the settings button //#LockClockEnhance
+        findViewById(R.id.weather_settings).setOnClickListener(this);
+
         // Register an onClickListener on the fake done button
         findViewById(R.id.button).setOnClickListener(this);
+
     }
 
     @Override
     public void onClick(View v) {
-        if (v.getId() != R.id.button) {
+        if (R.id.weather_refresh == v.getId()) {
             // Setup anim with desired properties and start the animation
             ImageView view = (ImageView) findViewById(R.id.weather_refresh);
             RotateAnimation anim = new RotateAnimation(0.0f, 360.0f,
@@ -123,6 +133,13 @@ public class ForecastActivity extends Activity implements OnClickListener {
             Intent i = new Intent(this, WeatherUpdateService.class);
             i.setAction(WeatherUpdateService.ACTION_FORCE_UPDATE);
             startService(i);
+        } else if( R.id.weather_settings == v.getId()) { //#LockClockEnhance
+            //Fire intent to show up the setting of LockClock.
+            Intent settingsIntent = new Intent( this,
+                                                com.cyanogenmod.lockclock.preference.Preferences.class);
+            settingsIntent.setAction( PREFERENCES_INTENT_ACTION );
+            settingsIntent.putExtra( IS_SETTING_CLICKED, true);
+            startActivity( settingsIntent);
         } else {
             finish();
         }
