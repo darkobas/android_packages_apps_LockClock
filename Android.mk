@@ -19,10 +19,11 @@ include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := $(call all-subdir-java-files)
 
-LOCAL_SDK_VERSION := current
+LOCAL_SDK_VERSION := 23
 LOCAL_PACKAGE_NAME := LockClock
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 LOCAL_AAPT_INCLUDE_ALL_RESOURCES := true
+
 # Include res dir from chips
 google_play_dir := ../../../external/google/google_play_services/libproject/google-play-services_lib/res
 res_dir := $(google_play_dir) res
@@ -32,8 +33,6 @@ LOCAL_AAPT_FLAGS := --auto-add-overlay
 LOCAL_AAPT_FLAGS += --extra-packages com.google.android.gms
 
 LOCAL_STATIC_JAVA_LIBRARIES := play \
-     org.apache.http.legacy
+                               org.apache.http.legacy
 
 include $(BUILD_PACKAGE)
-
-include $(call all-makefiles-under,$(LOCAL_PATH))
