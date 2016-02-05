@@ -17,7 +17,9 @@
 package com.cyanogenmod.lockclock.weather;
 
 import android.content.Context;
+import android.location.Address;
 import android.location.Location;
+import android.location.Geocoder;
 import android.net.Uri;
 import android.text.Html;
 import android.text.TextUtils;
@@ -209,8 +211,33 @@ public class YahooWeatherProvider implements WeatherProvider {
         }
     }
 
+    private String locateCity(Location location) {
+        try {
+            Geocoder geocoder = new Geocoder(mContext, Locale.getDefault());
+            List<Address> addresses =
+                    geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+            if (addresses.size() > 0) {
+                return addresses.get(0).getLocality();
+            } else {
+                Log.e(TAG, "No city data");
+            }
+        } catch (IOException e) {
+            Log.e(TAG, "Failed to retrieve city", e);
+        }
+        return null;
+    }
+
     @Override
     public WeatherInfo getWeatherInfo(Location location, boolean metric) {
+        // workaround broken yahoo geolocation API
+        String city = locateCity(location);
+        if (city != null) {
+            List<LocationResult> locations = getLocations(city);
+            if (locations.size() > 0) {
+                LocationResult loction = locations.get(0);
+                return getWeatherInfo(loction.id, city, metric);
+            }
+        }
         String language = getLanguage();
         String params = String.format(Locale.US, "\"%f %f\" and locale=\"%s\"",
                 location.getLatitude(), location.getLongitude(), language);
@@ -224,27 +251,27 @@ public class YahooWeatherProvider implements WeatherProvider {
             JSONObject result = results.getJSONObject("Result");
             String woeid = result.getString("woeid");
 
-            String city = null;
+            String queryCity = null;
             for (String name : PLACE_NAMES) {
                 if (!result.isNull(name)) {
-                    city = result.getString(name);
+                    queryCity = result.getString(name);
                     if (Log.isLoggable(TAG, Log.VERBOSE)) {
                         Log.v(TAG, String.format(Locale.US, "Placefinder for location %f %f " +
                                 "matched %s using %s", location.getLatitude(),
-                                location.getLongitude(), city, name));
+                                location.getLongitude(), queryCity, name));
                     }
                     break;
                 }
             }
 
             // The city name in the placefinder result is HTML encoded :-(
-            if (city != null) {
-                city = Html.fromHtml(city).toString();
+            if (queryCity != null) {
+                queryCity = Html.fromHtml(city).toString();
             } else {
                 Log.w(TAG, "Can not resolve place name for " + location);
             }
 
-            Log.d(TAG, "Resolved location " + location + " to " + city + " (" + woeid + ")");
+            Log.d(TAG, "Resolved location " + location + " to " + queryCity + " (" + woeid + ")");
 
             WeatherInfo info = getWeatherInfo(woeid, city, metric);
             if (info != null) {
