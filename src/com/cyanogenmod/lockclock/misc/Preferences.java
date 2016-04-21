@@ -23,6 +23,7 @@ import android.graphics.Color;
 import com.cyanogenmod.lockclock.weather.OpenWeatherMapProvider;
 import com.cyanogenmod.lockclock.weather.WeatherInfo;
 import com.cyanogenmod.lockclock.weather.WeatherProvider;
+import com.cyanogenmod.lockclock.weather.YahooWeatherProvider;
 
 import java.util.Calendar;
 import java.util.Locale;
@@ -187,7 +188,11 @@ public class Preferences {
     }
 
     public static WeatherProvider weatherProvider(Context context) {
-        return new OpenWeatherMapProvider(context);
+        String name = getPrefs(context).getString(Constants.WEATHER_SOURCE, "yahoo");
+        if (name.equals("openweathermap")) {
+            return new OpenWeatherMapProvider(context);
+        }
+        return new YahooWeatherProvider(context);
     }
 
     public static void setCachedWeatherInfo(Context context, long timestamp, WeatherInfo data) {
